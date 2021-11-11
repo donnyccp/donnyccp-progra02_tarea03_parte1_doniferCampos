@@ -1,6 +1,8 @@
 #ifndef ESCRITORBINARIO_H
 #define ESCRITORBINARIO_H
 
+#include "libro.h"
+
 #include <string>
 
 #include <iostream>
@@ -17,7 +19,7 @@ class EscritorBinario
     string apellido;
     string correo;
     string lineaPersonas;
-     int contadorLibros;
+    string nombreParaArchivoBinario;
     ofstream archivoSalida;
 
 
@@ -26,9 +28,12 @@ public:
 EscritorBinario();
 
 
-private:
+
 void LectorArchivoTexto();
-void EscritorArchivoBinario(int id, string nombrePersona, string apellidoPersona, string correoPersona);
+void AperturaArchivoBinario(string nombreLibro);
+void CreadorLibro(int id, string nombrePersona, string apellidoPersona, string correoPersona);
+void EscritorArchivoBinario(Libro &libro);
+void Cerrar();
 
 
 };

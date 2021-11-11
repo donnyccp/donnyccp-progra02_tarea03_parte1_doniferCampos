@@ -17,10 +17,11 @@ EscritorBinario::EscritorBinario()
     apellido = "";
     correo = "";
     lineaPersonas = "";
+    nombreParaArchivoBinario = "libros.dat";
 
-    contadorLibros = 0;
-
+    AperturaArchivoBinario(nombreParaArchivoBinario);
     LectorArchivoTexto();
+    Cerrar();
 }
 
 void EscritorBinario::LectorArchivoTexto()
@@ -45,28 +46,36 @@ void EscritorBinario::LectorArchivoTexto()
         std::istringstream ss(lineaPersonas);
         ss >> id >> nombre >> apellido >> correo;
 
-        EscritorArchivoBinario(id, nombre, apellido, correo);
+        CreadorLibro(id, nombre, apellido, correo);
     }
 
     ifsPersonas.close();
 }
 
-void EscritorBinario::EscritorArchivoBinario(int id, string nombrePersona, string apellidoPersona, string correoPersona)
+void EscritorBinario::AperturaArchivoBinario(string nombreLibro)
 {
-    ofstream archivoSalida;
-
-    archivoSalida.open("libros.dat", ios::out | ios::binary);
+    archivoSalida.open(nombreLibro, ios::out | ios::binary);
 
     if (!archivoSalida.is_open())
     {
-       throw new ExcepcionNoSeAbreArchivoBinario();
+        throw new ExcepcionNoSeAbreArchivoBinario();
     }
+}
+
+void EscritorBinario::CreadorLibro(int id, string nombrePersona, string apellidoPersona, string correoPersona)
+{
 
     Libro libro1{id, nombrePersona, apellidoPersona, correoPersona};
+    EscritorArchivoBinario(libro1);
+}
 
-    //long pos = archivoSalida.tellp();
-   // archivoSalida.seekp(pos+100); //No sirve agrega antes pero se sobre escribe
-    archivoSalida.write((char *)&libro1, sizeof(Libro));
+void EscritorBinario::EscritorArchivoBinario(Libro &libro)
+{
 
+    archivoSalida.write((char *)&libro, sizeof(Libro));
+}
+
+void EscritorBinario::Cerrar()
+{
     archivoSalida.close();
 }
