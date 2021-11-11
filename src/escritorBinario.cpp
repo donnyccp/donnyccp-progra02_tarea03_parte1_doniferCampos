@@ -31,7 +31,7 @@ void EscritorBinario::LectorArchivoTexto()
     std::ifstream ifsPersonas("personas.txt", std::ifstream::in);
     if (!ifsPersonas.is_open())
     {
-        throw new excepcionNoSeAbreArchivoTexto();
+        throw new ExcepcionNoSeAbreArchivoTexto();
     }
 
     while (std::getline(ifsPersonas, lineaPersonas))
@@ -59,7 +59,7 @@ void EscritorBinario::EscritorArchivoBinario(int id, string nombrePersona, strin
 
     if (!archivoSalida.is_open())
     {
-       throw new excepcionNoSeAbreArchivoBinario();
+       throw new ExcepcionNoSeAbreArchivoBinario();
     }
 
     Libro libro1{id, nombrePersona, apellidoPersona, correoPersona};
