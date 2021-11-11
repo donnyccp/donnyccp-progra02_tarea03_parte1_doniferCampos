@@ -18,6 +18,7 @@ EscritorBinario::EscritorBinario()
     correo = "";
     lineaPersonas = "";
     nombreParaArchivoBinario = "libros.dat";
+    //ofstream archivoSalida;
 
     AperturaArchivoBinario(nombreParaArchivoBinario);
     LectorArchivoTexto();
