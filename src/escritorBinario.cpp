@@ -5,6 +5,8 @@
 #include <string>
 #include <sstream>
 #include "libro.h"
+#include "./excepciones/excepcionNoSeAbreArchivoBinario.h"
+#include "./excepciones/excepcionNoSeAbreArchivoTexto.h"
 
 using namespace std;
 
@@ -29,8 +31,7 @@ void EscritorBinario::LectorArchivoTexto()
     std::ifstream ifsPersonas("personas.txt", std::ifstream::in);
     if (!ifsPersonas.is_open())
     {
-        std::cerr << "Error leyendo archivo Personas.txt" << std::endl;
-        //return -1;
+        throw new excepcionNoSeAbreArchivoTexto();
     }
 
     while (std::getline(ifsPersonas, lineaPersonas))
@@ -56,11 +57,10 @@ void EscritorBinario::EscritorArchivoBinario(int id, string nombrePersona, strin
 
     archivoSalida.open("libros.dat", ios::out | ios::binary);
 
-    /* if (!archivoSalida.is_open())
+    if (!archivoSalida.is_open())
     {
-        cerr << "No se pudo abrir archivo libros.dat para escribir los datos";
-        //return -1;
-    }*/
+       throw new excepcionNoSeAbreArchivoBinario();
+    }
 
     Libro libro1{id, nombrePersona, apellidoPersona, correoPersona};
 
