@@ -26,9 +26,6 @@ class EscritorBinario
 public:
 
 EscritorBinario();
-
-
-
 void LectorArchivoTexto();
 void AperturaArchivoBinario(string nombreLibro);
 void CreadorLibro(int id, string nombrePersona, string apellidoPersona, string correoPersona);

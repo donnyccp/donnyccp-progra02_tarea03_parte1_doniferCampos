@@ -19,3 +19,21 @@ Libro::Libro() {
     strcpy(this->apellido, "");
     strcpy(this->correo, "");
 }
+
+
+
+int Libro::getID() {
+    return this->id;
+}
+
+string Libro::getNombre() {
+    return string{this->nombre};
+}
+
+string Libro::getApellido() {
+    return string{this->apellido};
+}
+
+string Libro::getCorreo() {
+    return string{this->correo};
+}

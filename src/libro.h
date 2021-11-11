@@ -12,11 +12,13 @@ class Libro
     char apellido[15];
     char correo[50];
 
-    public:
+public:
     Libro(int id, string nombreDePersona, string apellidoDePersona, string correoDePersona);
     Libro();
-
+    int getID();
+    string getNombre();
+    string getApellido();
+    string getCorreo();
 };
-
 
 #endif
