@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <string>
+
 
 #include "../src/libro.h"
 #include "../src/escritorBinario.h"
@@ -13,14 +13,15 @@ namespace
 {
     TEST(EscritorTest, Prueba_EscrituraDeLibro)
     {
-        Libro libroDePrueba1{1, "Amelia", "Earhart", "amelia.earhart@ucr.ac.cr"};
+        Libro libroDePrueba1{1, "Amelia", "Earhart", "amelia_earhart@ucr.com"};
+        string nombreArchivoPrueba="pruebaDeLibro.dat";
 
-        EscritorBinario escritura;
-        escritura.AperturaArchivoBinario("pruebaDeLibro.dat");
-        escritura.EscritorArchivoBinario(libroDePrueba1);
-        escritura.Cerrar();
+        EscritorBinario escrituraBinaria;
+        escrituraBinaria.AperturaArchivoBinario(nombreArchivoPrueba);
+        escrituraBinaria.EscritorArchivoBinario(libroDePrueba1);
+        escrituraBinaria.Cerrar();
 
-        LectorDePrueba lector {"pruebaDeLibro.dat"};
+        LectorDePrueba lector {nombreArchivoPrueba};
         Libro libroLeido = lector.ComprobarLibro(0);
         lector.Cerrar();
 

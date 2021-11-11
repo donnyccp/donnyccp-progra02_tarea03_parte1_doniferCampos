@@ -9,7 +9,6 @@
 #include "./excepciones/excepcionNoSeAbreArchivoTexto.h"
 
 using namespace std;
-
 EscritorBinario::EscritorBinario()
 {
     id = 0;
@@ -17,12 +16,19 @@ EscritorBinario::EscritorBinario()
     apellido = "";
     correo = "";
     lineaPersonas = "";
-    nombreParaArchivoBinario = "libros.dat";
+    nombreParaArchivoBinario ="";
+}
+
+void EscritorBinario::EscritorDeArchivosBinario(string nombreParaLibro)
+{
+    
+    nombreParaArchivoBinario = nombreParaLibro;
     //ofstream archivoSalida;
 
     AperturaArchivoBinario(nombreParaArchivoBinario);
-    LectorArchivoTexto();
-    Cerrar();
+    cout<<"aqui"<<endl;
+    
+    //Cerrar();
 }
 
 void EscritorBinario::LectorArchivoTexto()
@@ -33,7 +39,9 @@ void EscritorBinario::LectorArchivoTexto()
     std::ifstream ifsPersonas("personas.txt", std::ifstream::in);
     if (!ifsPersonas.is_open())
     {
+        
         throw new ExcepcionNoSeAbreArchivoTexto();
+        
     }
 
     while (std::getline(ifsPersonas, lineaPersonas))
@@ -50,6 +58,7 @@ void EscritorBinario::LectorArchivoTexto()
         CreadorLibro(id, nombre, apellido, correo);
     }
 
+Cerrar();
     ifsPersonas.close();
 }
 
