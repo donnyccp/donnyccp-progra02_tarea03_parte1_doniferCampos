@@ -18,10 +18,11 @@ LectorDePrueba::LectorDePrueba (string nombreArchivo)
 
 void LectorDePrueba::AbrirArchivo(string nombreDeArchivo){
     ifstream archivoEntrada;
-    archivoEntrada.open("libros.dat", ios::in|ios::binary);
+    archivoEntrada.open(nombreDeArchivo, ios::in|ios::binary);
 
     if (!archivoEntrada.is_open())
     {
+         cout<<"aqui"<<endl;
          throw new ExcepcionNoSeAbreArchivoBinario();
     }
 

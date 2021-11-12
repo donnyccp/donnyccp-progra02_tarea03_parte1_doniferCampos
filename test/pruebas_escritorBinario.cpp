@@ -21,7 +21,7 @@ namespace
         escrituraBinaria.Cerrar();
 
         LectorDePrueba lector{nombreArchivoPrueba};
-        Libro libroLeido = lector.ComprobarLibro(0);
+        Libro libroLeido = lector.ComprobarLibro(1);
         lector.Cerrar();
 
         EXPECT_EQ(libroLeido.getID(), libroDePrueba1.getID());
@@ -46,7 +46,7 @@ namespace
 
                 // Leer el libro de prueba
                 LectorDePrueba lector{"pruebaDeLibro3B.dat"};
-                Libro libroLeido = lector.ComprobarLibro(0);
+                Libro libroLeido = lector.ComprobarLibro(1);
                 lector.Cerrar();
             },
             ExcepcionNoSeAbreArchivoBinario);
@@ -68,7 +68,7 @@ namespace
 
                 // Leer el libro de prueba
                 LectorDePrueba lector{nombreArchivoPrueba};
-                Libro libroLeido = lector.ComprobarLibro(0);
+                Libro libroLeido = lector.ComprobarLibro(10);
                 lector.Cerrar();
             },
             ExcepcionNoSeAbreArchivoTexto);

@@ -23,13 +23,13 @@ int main()
     EscritorBinario escrituraBinaria;
     escrituraBinaria.AperturaArchivoBinario(nombreArchivoPrueba);
     string nombreDeArchivoTexto="NoHayNombre.txt";
-    escrituraBinaria.LectorArchivoTexto(nombreDeArchivoTexto);
+   // escrituraBinaria.LectorArchivoTexto(nombreDeArchivoTexto);
     escrituraBinaria.EscritorArchivoBinario(libroDePrueba2);
     escrituraBinaria.Cerrar();
 
     // Leer el libro de prueba
     LectorDePrueba lector{nombreArchivoPrueba};
-    Libro libroLeido = lector.ComprobarLibro(0);
+    Libro libroLeido = lector.ComprobarLibro(1);
     lector.Cerrar();
 
     return 0;
