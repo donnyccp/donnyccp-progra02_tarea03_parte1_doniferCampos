@@ -12,22 +12,22 @@ namespace
 {
     TEST(EscritorTest, Prueba_EscrituraDeLibro)
     {
-        Libro libroDePrueba1{1, "Amelia", "Earhart", "amelia_earhart@ucr.com"};
+        Libro libroLeidoDeBinario{1, "Amelia", "Earhart", "amelia_earhart@ucr.com"};
         string nombreArchivoPrueba = "pruebaDeLibro.dat";
 
         EscritorBinario escrituraBinaria;
         escrituraBinaria.AperturaArchivoBinario(nombreArchivoPrueba);
-        escrituraBinaria.EscritorArchivoBinario(libroDePrueba1);
+        escrituraBinaria.EscritorArchivoBinario(libroLeidoDeBinario);
         escrituraBinaria.Cerrar();
 
         LectorDePrueba lector{nombreArchivoPrueba};
         Libro libroLeido = lector.ComprobarLibro(1);
         lector.Cerrar();
 
-        EXPECT_EQ(libroLeido.getID(), libroDePrueba1.getID());
-        EXPECT_EQ(libroLeido.getNombre(), libroDePrueba1.getNombre());
-        EXPECT_EQ(libroLeido.getApellido(), libroDePrueba1.getApellido());
-        EXPECT_EQ(libroLeido.getCorreo(), libroDePrueba1.getCorreo());
+        EXPECT_EQ(libroLeido.getID(), libroLeidoDeBinario.getID());
+        EXPECT_EQ(libroLeido.getNombre(), libroLeidoDeBinario.getNombre());
+        EXPECT_EQ(libroLeido.getApellido(), libroLeidoDeBinario.getApellido());
+        EXPECT_EQ(libroLeido.getCorreo(), libroLeidoDeBinario.getCorreo());
     }
 
     TEST(EscritorTest, Prueba_ExcepcionNoSeAbreArchivoBinario)
