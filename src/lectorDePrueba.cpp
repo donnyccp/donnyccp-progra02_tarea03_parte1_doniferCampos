@@ -6,48 +6,50 @@
 #include "libro.h"
 #include "./excepciones/excepcionNoSeAbreArchivoBinario.h"
 
-
 using namespace std;
 
-LectorDePrueba::LectorDePrueba (string nombreArchivo)
+LectorDePrueba::LectorDePrueba(string nombreArchivo)
 {
- AbrirArchivo(nombreArchivo);
-
-
+     AbrirArchivo(nombreArchivo);
 }
 
-void LectorDePrueba::AbrirArchivo(string nombreDeArchivo){
-    ifstream archivoEntrada;
-    archivoEntrada.open(nombreDeArchivo, ios::in|ios::binary);
+void LectorDePrueba::AbrirArchivo(string nombreDeArchivo)
+{
+     ifstream archivoEntrada;
+     archivoEntrada.open(nombreDeArchivo, ios::in | ios::binary);
 
-    if (!archivoEntrada.is_open())
-    {
-         
-         throw new ExcepcionNoSeAbreArchivoBinario();
-    }
+     if (!archivoEntrada.is_open())
+     {
 
+          throw new ExcepcionNoSeAbreArchivoBinario();
+     }
 }
 
-Libro LectorDePrueba::ComprobarLibro(int idLibro){
+Libro LectorDePrueba::ComprobarLibro(int idLibro)
+{
      Libro libroLeido;
 
-    // Posición del libro número idLibro
-    long posicionLibro = sizeof(Libro) * (idLibro);
+     // Posición del libro número idLibro
+     long posicionLibro = sizeof(Libro) * (idLibro);
 
-    archivoEntrada.seekg(0, ios::end);
-    long fileSize = archivoEntrada.tellg();
+    
+     archivoEntrada.seekg(0, ios::end);
+     long fileSize = archivoEntrada.tellg();
 
-    /*f (posicionLibro > fileSize)
+     if (posicionLibro > fileSize)
     {
         throw ExcepcionNoSeAbreArchivoBinario();
-    }*/
+    }
+    
 
-    archivoEntrada.seekg(posicionLibro);
-    archivoEntrada.read((char *) &libroLeido, sizeof(Libro));
-
-    return libroLeido;
+     archivoEntrada.seekg(posicionLibro);
+     archivoEntrada.read((char *)&libroLeido, sizeof(Libro));
+     
+     
+     return libroLeido;
 }
 
-void LectorDePrueba::Cerrar(){
+void LectorDePrueba::Cerrar()
+{
      archivoEntrada.close();
 }

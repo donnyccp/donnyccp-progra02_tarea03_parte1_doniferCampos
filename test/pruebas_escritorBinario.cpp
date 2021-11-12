@@ -22,7 +22,9 @@ namespace
 
         LectorDePrueba lector{nombreArchivoPrueba};
         Libro libroLeido = lector.ComprobarLibro(1);
+        
         lector.Cerrar();
+        
 
         EXPECT_EQ(libroLeido.getID(), libroLeidoDeBinario.getID());
         EXPECT_EQ(libroLeido.getNombre(), libroLeidoDeBinario.getNombre());
@@ -68,7 +70,7 @@ namespace
 
                 // Leer el libro de prueba
                 LectorDePrueba lector{nombreArchivoPrueba};
-                Libro libroLeido = lector.ComprobarLibro(10);
+                Libro libroLeido = lector.ComprobarLibro(1);
                 lector.Cerrar();
             },
             ExcepcionNoSeAbreArchivoTexto);
