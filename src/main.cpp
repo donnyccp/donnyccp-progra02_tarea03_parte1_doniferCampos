@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-    string nombreParaLibro = "libroPersonas.dat";
+    string nombreParaLibro = "personas.dat";
     string nombreDeArchivoTexto = "personas.txt";
 
     //Abrir, leer texto plano y escribir binario
