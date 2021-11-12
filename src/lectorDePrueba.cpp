@@ -22,14 +22,14 @@ void LectorDePrueba::AbrirArchivo(string nombreDeArchivo){
 
     if (!archivoEntrada.is_open())
     {
-         cout<<"aqui"<<endl;
+         
          throw new ExcepcionNoSeAbreArchivoBinario();
     }
 
 }
 
 Libro LectorDePrueba::ComprobarLibro(int idLibro){
-     Libro libroLeidoDeBinario;
+     Libro libroLeido;
 
     // Posición del libro número idLibro
     long posicionLibro = sizeof(Libro) * (idLibro);
@@ -37,10 +37,15 @@ Libro LectorDePrueba::ComprobarLibro(int idLibro){
     archivoEntrada.seekg(0, ios::end);
     long fileSize = archivoEntrada.tellg();
 
-    archivoEntrada.seekg(posicionLibro);
-    archivoEntrada.read((char *) &libroLeidoDeBinario, sizeof(Libro));
+    /*f (posicionLibro > fileSize)
+    {
+        throw ExcepcionNoSeAbreArchivoBinario();
+    }*/
 
-    return libroLeidoDeBinario;
+    archivoEntrada.seekg(posicionLibro);
+    archivoEntrada.read((char *) &libroLeido, sizeof(Libro));
+
+    return libroLeido;
 }
 
 void LectorDePrueba::Cerrar(){
