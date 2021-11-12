@@ -8,7 +8,7 @@ g++ -std=c++17 -stdlib=libc++ -g ./src/*.cpp -o ./obj/tarea1 <br />
 La primera aplicación, lee un archivo de personas.txt y escribe un archivo binario con
 la información utilizando el siguiente formato por cada persona: <br />
 Nombre del campo -    Tipo      -  Tamaño <br />
-ID               - Entero (int) - <br />
+ID &nbsp;&nbsp;&nbsp;&nbsp;- Entero (int) - <br />
 Nombre           - String       -    15 <br />
 Apellido         -  String      -    15 <br />
 Correo           -  String      -    50 <br />
