@@ -33,14 +33,14 @@ Libro LectorDePrueba::ComprobarLibro(int idLibro)
      long posicionLibro = sizeof(Libro) * (idLibro);
 
     
-     archivoEntrada.seekg(0, ios::end);
+    /* archivoEntrada.seekg(0, ios::end);
      long fileSize = archivoEntrada.tellg();
 
      if (posicionLibro > fileSize)
     {
         throw ExcepcionNoSeAbreArchivoBinario();
     }
-    
+    */
 
      archivoEntrada.seekg(posicionLibro);
      archivoEntrada.read((char *)&libroLeido, sizeof(Libro));
