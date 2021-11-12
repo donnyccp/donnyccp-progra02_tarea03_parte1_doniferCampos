@@ -27,7 +27,7 @@ public:
 
 EscritorBinario();
 void EscritorDeArchivosBinario(string nombreParaLibro);
-void LectorArchivoTexto();
+void LectorArchivoTexto(string nombreArchivoTexto);
 void AperturaArchivoBinario(string nombreLibro);
 void CreadorLibro(int id, string nombrePersona, string apellidoPersona, string correoPersona);
 void EscritorArchivoBinario(Libro &libro);

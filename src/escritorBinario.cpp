@@ -31,12 +31,12 @@ void EscritorBinario::EscritorDeArchivosBinario(string nombreParaLibro)
     //Cerrar();
 }
 
-void EscritorBinario::LectorArchivoTexto()
+void EscritorBinario::LectorArchivoTexto(string nombreArchivoTexto)
 {
 
     //Abrir archivo personas
 
-    std::ifstream ifsPersonas("personas.txt", std::ifstream::in);
+    std::ifstream ifsPersonas(nombreArchivoTexto, std::ifstream::in);
     if (!ifsPersonas.is_open())
     {
         
