@@ -40,7 +40,7 @@ void EscritorBinario::LectorArchivoTexto(string nombreArchivoTexto)
     if (!ifsPersonas.is_open())
     {
         
-        throw new ExcepcionNoSeAbreArchivoTexto();
+        throw  ExcepcionNoSeAbreArchivoTexto();
         
     }
 
@@ -68,7 +68,7 @@ void EscritorBinario::AperturaArchivoBinario(string nombreLibro)
 
     if (!archivoSalida.is_open())
     {
-        throw new ExcepcionNoSeAbreArchivoBinario();
+        throw  ExcepcionNoSeAbreArchivoBinario();
     }
 }
 

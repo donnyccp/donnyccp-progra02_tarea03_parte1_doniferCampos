@@ -21,7 +21,7 @@ ifstream LectorDePrueba::AbrirArchivo(string nombreDeArchivo)
      if (!archivoEntrada.is_open())
      {
 
-          throw new ExcepcionNoSeAbreArchivoBinario();
+          throw ExcepcionNoSeAbreArchivoBinario();
      }
 
      return archivoEntrada;
