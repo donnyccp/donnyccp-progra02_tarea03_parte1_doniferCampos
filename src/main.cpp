@@ -1,8 +1,8 @@
 #ifndef UNIT_TEST
 #include <iostream>
 #include <fstream>
+#include "libro.h"
 #include "escritorBinario.h"
-#include "lectorDePrueba.h" //eliminar
 
 using namespace std;
 
@@ -16,6 +16,7 @@ int main()
     escritorDeBinarios.EscritorDeArchivosBinario(nombreParaLibro);
 
     escritorDeBinarios.LectorArchivoTexto(nombreDeArchivoTexto);
+
 
     return 0;
 }

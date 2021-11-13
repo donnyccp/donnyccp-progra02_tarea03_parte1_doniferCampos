@@ -8,12 +8,12 @@
 
 using namespace std;
 
-LectorDePrueba::LectorDePrueba(string nombreArchivo)
+LectorDePrueba::LectorDePrueba()
 {
-     AbrirArchivo(nombreArchivo);
+     //Constructor vacio de la clase
 }
 
-void LectorDePrueba::AbrirArchivo(string nombreDeArchivo)
+ifstream LectorDePrueba::AbrirArchivo(string nombreDeArchivo)
 {
      ifstream archivoEntrada;
      archivoEntrada.open(nombreDeArchivo, ios::in | ios::binary);
@@ -23,9 +23,12 @@ void LectorDePrueba::AbrirArchivo(string nombreDeArchivo)
 
           throw new ExcepcionNoSeAbreArchivoBinario();
      }
+
+     return archivoEntrada;
+
 }
 
-Libro LectorDePrueba::ComprobarLibro(int idLibro)
+Libro LectorDePrueba::ComprobarLibro(std::istream& archivoEntrada, int idLibro)
 {
      Libro libroLeido;
 
@@ -33,14 +36,14 @@ Libro LectorDePrueba::ComprobarLibro(int idLibro)
      long posicionLibro = sizeof(Libro) * (idLibro);
 
     
-    /* archivoEntrada.seekg(0, ios::end);
+     archivoEntrada.seekg(0, ios::end);
      long fileSize = archivoEntrada.tellg();
 
      if (posicionLibro > fileSize)
     {
         throw ExcepcionNoSeAbreArchivoBinario();
     }
-    */
+    
 
      archivoEntrada.seekg(posicionLibro);
      archivoEntrada.read((char *)&libroLeido, sizeof(Libro));

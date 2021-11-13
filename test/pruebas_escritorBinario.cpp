@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
 
+#include <fstream>
+#include <sstream>
 #include "../src/libro.h"
 #include "../src/escritorBinario.h"
 #include "../src/lectorDePrueba.h"
@@ -12,24 +14,26 @@ namespace
 {
     TEST(EscritorTest, Prueba_EscrituraDeLibro)
     {
-        Libro libroLeidoDeBinario{1, "Amelia", "Earhart", "amelia_earhart@ucr.com"};
+        Libro libroEscritoBinario{1, "Amelia", "Earhart", "amelia_earhart@ucr.com"};
         string nombreArchivoPrueba = "pruebaDeLibro.dat";
 
         EscritorBinario escrituraBinaria;
         escrituraBinaria.AperturaArchivoBinario(nombreArchivoPrueba);
-        escrituraBinaria.EscritorArchivoBinario(libroLeidoDeBinario);
+        escrituraBinaria.EscritorArchivoBinario(libroEscritoBinario);
         escrituraBinaria.Cerrar();
 
-        LectorDePrueba lector{nombreArchivoPrueba};
-        Libro libroLeido = lector.ComprobarLibro(1);
-        
-        lector.Cerrar();
-        
+        LectorDePrueba lector;
+        ifstream archivoEntrada;
+        archivoEntrada = lector.AbrirArchivo(nombreArchivoPrueba);
+        Libro libroLeido = lector.ComprobarLibro(archivoEntrada, 0);
 
-        EXPECT_EQ(libroLeido.getID(), libroLeidoDeBinario.getID());
-        EXPECT_EQ(libroLeido.getNombre(), libroLeidoDeBinario.getNombre());
-        EXPECT_EQ(libroLeido.getApellido(), libroLeidoDeBinario.getApellido());
-        EXPECT_EQ(libroLeido.getCorreo(), libroLeidoDeBinario.getCorreo());
+        lector.Cerrar();
+        archivoEntrada.close();
+
+        EXPECT_EQ(libroLeido.getID(), libroEscritoBinario.getID());
+        EXPECT_EQ(libroLeido.getNombre(), libroEscritoBinario.getNombre());
+        EXPECT_EQ(libroLeido.getApellido(), libroEscritoBinario.getApellido());
+        EXPECT_EQ(libroLeido.getCorreo(), libroEscritoBinario.getCorreo());
     }
 
     TEST(EscritorTest, Prueba_ExcepcionNoSeAbreArchivoBinario)
@@ -47,9 +51,13 @@ namespace
                 escrituraBinaria.Cerrar();
 
                 // Leer el libro de prueba
-                LectorDePrueba lector{"pruebaDeLibro3B.dat"};
-                Libro libroLeido = lector.ComprobarLibro(1);
+                LectorDePrueba lector;
+                ifstream archivoEntrada;
+                archivoEntrada = lector.AbrirArchivo("pruebaDeLibro3B.dat");
+                Libro libroLeido = lector.ComprobarLibro(archivoEntrada, 0);
+
                 lector.Cerrar();
+                archivoEntrada.close();
             },
             ExcepcionNoSeAbreArchivoBinario);
     }
@@ -58,7 +66,7 @@ namespace
     {
 
         Libro libroDePrueba2{10, "Catherine", "Janeway", "ka_janeway@ucr.com"};
-        string nombreArchivoPrueba = "pruebaDeLibro3A.dat";
+        string nombreArchivoPrueba = "pruebaDeLibro4.dat";
 
         EXPECT_THROW(
             {
@@ -69,11 +77,14 @@ namespace
                 escrituraBinaria.Cerrar();
 
                 // Leer el libro de prueba
-                LectorDePrueba lector{nombreArchivoPrueba};
-                Libro libroLeido = lector.ComprobarLibro(1);
+                LectorDePrueba lector;
+                ifstream archivoEntrada;
+                archivoEntrada = lector.AbrirArchivo(nombreArchivoPrueba);
+                Libro libroLeido = lector.ComprobarLibro(archivoEntrada, 0);
+
                 lector.Cerrar();
-            },
-            ExcepcionNoSeAbreArchivoTexto);
+                archivoEntrada.close();
+            },ExcepcionNoSeAbreArchivoTexto);
     }
 
 }

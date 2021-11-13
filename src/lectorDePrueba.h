@@ -18,9 +18,9 @@ class LectorDePrueba
 ifstream archivoEntrada;
 
 public:
-LectorDePrueba(string nombreArchivo);
-void AbrirArchivo(string nombreDeArchivo);
-Libro ComprobarLibro(int idDeLibro);
+LectorDePrueba();
+ifstream AbrirArchivo(string nombreDeArchivo);
+Libro ComprobarLibro(std::istream& archivoDeEntrada, int idDeLibro);
 void Cerrar();
 
 
