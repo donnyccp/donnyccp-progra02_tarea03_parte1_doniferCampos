@@ -23,12 +23,12 @@ void EscritorBinario::EscritorDeArchivosBinario(string nombreParaLibro)
 {
     
     nombreParaArchivoBinario = nombreParaLibro;
-    //ofstream archivoSalida;
+   
 
     AperturaArchivoBinario(nombreParaArchivoBinario);
-    cout<<"aqui"<<endl;
     
-    //Cerrar();
+    
+    
 }
 
 void EscritorBinario::LectorArchivoTexto(string nombreArchivoTexto)

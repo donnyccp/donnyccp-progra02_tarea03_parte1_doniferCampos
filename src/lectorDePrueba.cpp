@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <sstream>
+
 #include "libro.h"
 #include "./excepciones/excepcionNoSeAbreArchivoBinario.h"
 
