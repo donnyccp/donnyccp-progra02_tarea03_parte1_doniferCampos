@@ -15,7 +15,7 @@ EscritorBinario::EscritorBinario()
     nombre = "";
     apellido = "";
     correo = "";
-    lineaPersonas = "";
+    datosPersonas = "";
     nombreParaArchivoBinario ="";
 }
 
@@ -44,7 +44,7 @@ void EscritorBinario::LectorArchivoTexto(string nombreArchivoTexto)
         
     }
 
-    while (std::getline(ifsPersonas, lineaPersonas))
+    while (std::getline(ifsPersonas, datosPersonas))
     {
 
         id = 0;
@@ -52,7 +52,7 @@ void EscritorBinario::LectorArchivoTexto(string nombreArchivoTexto)
         apellido = "";
         correo = "";
 
-        std::istringstream ss(lineaPersonas);
+        std::istringstream ss(datosPersonas);
         ss >> id >> nombre >> apellido >> correo;
 
         CreadorLibro(id, nombre, apellido, correo);

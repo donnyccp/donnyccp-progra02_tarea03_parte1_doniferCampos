@@ -18,7 +18,7 @@ class EscritorBinario
     string nombre;
     string apellido;
     string correo;
-    string lineaPersonas;
+    string datosPersonas;
     string nombreParaArchivoBinario;
     ofstream archivoSalida;
 
