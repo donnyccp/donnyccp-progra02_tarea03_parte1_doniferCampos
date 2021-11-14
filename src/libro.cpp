@@ -1,6 +1,6 @@
 #include "libro.h"
 #include <string>
-#include <cstring>
+#include <cstring>//Se requirio no funciona strcpy en windows sin este include
 
 using namespace std;
 
