@@ -19,6 +19,6 @@ Para que este programa se ejecute eficazmente es necesario que siga los siguient
 
  Este programa cuenta con 4 clases. La clase principal main gestiona la instancia a la clase escritorBinario. La clase escritorBinario gestiona la escritura de un archivo binario con el nombre de "personas.dat" que contiene los datos de id, nombre, apellido y correo de cada persona (libro), para ello realiza una instancia a la clase libro. La clase libro gestiona los datos de las personas en un arreglo de caracteres denominado libro. La clase lectorDePrueba es una clase auxiliar a las pruebas unitarias con GoogleTest de la correcta escritura de el archivo binario, no es esencial para la escritura de un archivo binario<br />
 
- Para comprobar el correcto funcionamiento del programa y sus metodos este programa cuenta con pruebas unitarias que se ejecutan usando GoogleTets, tome las previsiones necasarias para ejecuatar las pruebas, mas información en https://google.github.io/googletest/.<br />
+ Para comprobar el correcto funcionamiento del programa y sus metodos este programa cuenta con pruebas unitarias que se ejecutan usando GoogleTests, tome las previsiones necasarias para ejecuatar las pruebas, mas información en https://google.github.io/googletest/.<br />
 
 Al final de la ejecución se escribe un archivo binario  llamado "personas.dat". <br />
